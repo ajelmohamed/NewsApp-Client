@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Models/User';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { map } from 'rxjs/operators';
 
 
@@ -18,11 +19,13 @@ export class AuthService {
 
 
     login(username: string, password: string) {
-        return this.http.post<any>(`/users/authenticate`, { username: username, password: password })
+        const  params = new  HttpParams().set('email', username).set('password', password);
+       
+        return this.http.post<any>(`http://localhost:9999/login`,params )
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                if (user ) {
+                    console.log(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
 

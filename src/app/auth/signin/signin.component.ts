@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../../Services/auth.service';
 
-
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -16,6 +15,7 @@ export class SigninComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  valid=false;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -53,11 +53,14 @@ export class SigninComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate([this.returnUrl]);
+                this.router.navigate(["/acceuil"])
+                console.log(data);
               },
               error => {
-                  //this.alertService.error(error);
+                console.log(error);
+
                   this.loading = false;
+                  this.valid=true;
               });
   }
 }

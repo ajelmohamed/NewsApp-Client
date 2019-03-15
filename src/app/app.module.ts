@@ -9,11 +9,17 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { FormsModule, ReactiveFormsModule } from   '@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { Routes, RouterModule } from '../../node_modules/@angular/router';
+import { AuthGuardService } from './Services/auth-guard.service';
+import { AuthService } from './Services/auth.service';
 
 const routes: Routes = [
+  { path: 'acceuil',  canActivate: [AuthGuardService], component: AcceuilComponent },
+
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'acceuil', component: AcceuilComponent },
+  { path: '', canActivate: [AuthGuardService],component: AcceuilComponent  },
+
+  { path: '**', redirectTo: '' }
 
 ];
 @NgModule({
@@ -36,7 +42,10 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [  
+     AuthGuardService,
+     AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
