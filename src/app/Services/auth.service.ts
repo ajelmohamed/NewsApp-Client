@@ -14,14 +14,24 @@ export class AuthService {
   register(user :User) {
     
     
-    return this.http.post(`http://localhost:9999/saveUser`, user);
+    return this.http.post(`http://localhost:9999/registerUser`, user)
+    .pipe(map(user => {
+        // register successful if there's a jwt token in the response
+        if (user ) {
+            console.log(user);
+
+            localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+    }));
 }
 
 
     login(username: string, password: string) {
         const  params = new  HttpParams().set('email', username).set('password', password);
        
-        return this.http.post<any>(`http://localhost:9999/login`,params )
+        return this.http.post<any>(`http://localhost:9999/loginUser`,params )
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user ) {

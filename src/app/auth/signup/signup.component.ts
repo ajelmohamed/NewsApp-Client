@@ -16,6 +16,8 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
     loading = false;
     submitted = false;
+    valid=false;
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -27,7 +29,7 @@ export class SignupComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            username: ['', Validators.required],
+            username: ['', [Validators.required,Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
@@ -57,12 +59,11 @@ export class SignupComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    //this.alertService.success('Registration successful', true);
-                    //this.router.navigate(['/login']);
+                    this.router.navigate(['/acceuil']);
                 },
                 error => {
-                   // this.alertService.error(error);
-                    //this.loading = false;
+                    this.valid=true;
+                    this.loading = false;
                 });
     }
 }

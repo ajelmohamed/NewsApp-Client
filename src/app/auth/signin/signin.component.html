@@ -3,17 +3,19 @@
       <div class="row">
           <div class="col-sm-6 offset-sm-3">
               
-                    <div *ngIf="valid" class="alert alert-danger">Invalid UserName or Password</div>
+                    <div *ngIf="valid" class="alert alert-danger">Invalid Email or Password</div>
 
 <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   
     <div class="form-group">
            
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <label for="username">Email</label>
+        <input type="email" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.required">Email is required</div>
+            <div *ngIf="f.username.errors.email"> invalid email format</div>
+
         </div>
 
 
