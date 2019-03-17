@@ -7,10 +7,12 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { FormsModule, ReactiveFormsModule } from   '@angular/forms';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
-import { Routes, RouterModule } from '../../node_modules/@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './Services/auth-guard.service';
 import { AuthService } from './Services/auth.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: 'acceuil',  canActivate: [AuthGuardService], component: AcceuilComponent },
@@ -25,11 +27,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-
+    HeaderComponent,
+    FooterComponent,
     AppComponent,
     SigninComponent,
     SignupComponent,
-    AcceuilComponent
+    AcceuilComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,5 +1,5 @@
 export class User {
-	idUser;
+	idUser:String;
 	nomUser:String ;
 	prenomUser : string;
 	emailUser : string;
