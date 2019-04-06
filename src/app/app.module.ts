@@ -13,13 +13,18 @@ import { AuthGuardService } from './Services/auth-guard.service';
 import { AuthService } from './Services/auth.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { PostdetailComponent } from './postdetail/postdetail.component';
+import { AcceuilParCategorieComponent } from './acceuil-par-categorie/acceuil-par-categorie.component';
 
 const routes: Routes = [
-  { path: 'acceuil',  canActivate: [AuthGuardService], component: AcceuilComponent },
+  { path: 'acceuil', component: AcceuilComponent },
 
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: '', canActivate: [AuthGuardService],component: AcceuilComponent  },
+  {path:'postdetail/:id',component:PostdetailComponent},
+  {path:'postparcategorie/:id',component:AcceuilParCategorieComponent},
+
+  { path: '' ,component: AcceuilComponent  },
 
   { path: '**', redirectTo: '' }
 
@@ -34,7 +39,9 @@ const routes: Routes = [
     SignupComponent,
     AcceuilComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PostdetailComponent,
+    AcceuilParCategorieComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

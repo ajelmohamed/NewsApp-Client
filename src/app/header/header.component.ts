@@ -18,7 +18,11 @@ export class HeaderComponent implements OnInit {
   constructor(private categorieservice : CaterogieService, private router : Router) {
    }
  
- 
+   onViewCategorie(i){
+    
+      this.router.navigate(['/postparcategorie/',this.categories[i].idCategorie]);
+    
+   }
   
   ngOnInit() {
     this.categoriesSubscription = this.categorieservice.CategoriesSubject.subscribe(
