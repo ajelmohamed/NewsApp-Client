@@ -3,6 +3,9 @@ import { Categorie } from '../Models/Categorie';
 import { Subscription } from 'rxjs';
 import { CaterogieService } from '../Services/caterogie.service';
 import { Router } from '@angular/router';
+import { NgModel } from '../../../node_modules/@angular/forms';
+import { PostService } from '../Services/post.service';
+import { Post } from '../Models/Post';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +16,19 @@ export class HeaderComponent implements OnInit {
 
   categories: Categorie[];
   categoriesSubscription: Subscription;
-  
+  Searchbox:String;
 
-  constructor(private categorieservice : CaterogieService, private router : Router) {
+  constructor(private categorieservice : CaterogieService, private router : Router, private postsService:PostService) {
    }
  
-   onViewCategorie(i){
+   onSearch(msj: NgModel){
+     this.Searchbox=msj.value;
+     console.log(this.Searchbox);
+     this.postsService.searchPostsFromServer(this.Searchbox);
     
-      this.router.navigate(['/postparcategorie/',this.categories[i].idCategorie]);
+  }
+   onViewCategorie(i){
+     this.router.navigate(['/postparcategorie/',this.categories[i].idCategorie]);
     
    }
   
@@ -28,11 +36,10 @@ export class HeaderComponent implements OnInit {
     this.categoriesSubscription = this.categorieservice.CategoriesSubject.subscribe(
       (categories: Categorie[]) => {
         this.categories = categories;
-        console.log(this.categories)
       }
     );
     
-     this.categorieservice.emitCategories
+     this.categorieservice.emitCategories()
   }
 
   ngOnDestroy(){

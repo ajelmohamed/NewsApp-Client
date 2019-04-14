@@ -13,23 +13,28 @@ export class AcceuilComponent implements OnInit {
 
   posts: Post[];
   postsSubscription: Subscription;
-  
+  totalRec : number;
+  page: number = 1;
 
   constructor(private postservice : PostService, private router : Router) {
-    
    }
  
  
   
   ngOnInit() {
+    this.getPost();
+  }
+
+  getPost(){
     this.postsSubscription = this.postservice.PostsSubject.subscribe(
       (posts: Post[]) => {
         this.posts = posts;
-        console.log(this.posts)
+        this.totalRec = this.posts.length;
+
       }
     );
     
-     this.postservice.emitPosts
+     this.postservice.emitPosts();
   }
 
   ngOnDestroy(){

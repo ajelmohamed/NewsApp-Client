@@ -28,10 +28,34 @@ export class PostService {
   
  }
 
+ searchPostsFromServer(search : String){
+  
+  this.httpClient.get('http://localhost:9999/searchPosts/'+search).subscribe((res : any[])=>{
+    this.listPost=res["content"];
+    this.emitPosts();
+  });
+  
+ }
+
  saveComment(comment:Comment)
 {
-  return this.httpClient.post(`http://localhost:9999/savePost`, comment)
-        .pipe(map(post => {
+  return this.httpClient.post(`http://localhost:9999/saveComment`, comment)
+        .pipe(map((comment : Comment) => {
+            // register successful if there's a jwt token in the response
+            if (comment ) {
+                console.log(comment);
+    
+               // this.getAllPosts();
+                
+            }
+           // this.getAllPosts();
+            return comment;
+        }));
+}
+ 
+updatePost(post :Post){
+  return this.httpClient.put(`http://localhost:9999/updatePost/`+post.idPost, post)
+        .pipe(map((post : Post) => {
             // register successful if there's a jwt token in the response
             if (post ) {
                 console.log(post);
@@ -43,7 +67,6 @@ export class PostService {
             return post;
         }));
 }
-
  
  getSinglePost(id: String) {
    this.url='http://localhost:9999/findPost/'+id;
@@ -58,6 +81,35 @@ export class PostService {
       );
     }
   );
+}
+
+getPopularPost() {
+  this.url='http://localhost:9999/findPopularPosts/';
+  return new Promise(
+   (resolve, reject) => {
+     this.httpClient.get(this.url).subscribe(
+       (res : any[])=>{
+         resolve(res);
+       }, (error) => {
+         reject(error);
+       }
+     );
+   }
+ );
+}
+getLatestPost() {
+  this.url='http://localhost:9999/findLatestPosts/';
+  return new Promise(
+   (resolve, reject) => {
+     this.httpClient.get(this.url).subscribe(
+       (res : any[])=>{
+         resolve(res);
+       }, (error) => {
+         reject(error);
+       }
+     );
+   }
+ );
 }
 
 getPostParCategorie(id: String) {

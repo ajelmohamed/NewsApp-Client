@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
     loading = false;
     submitted = false;
     valid=false;
+    file:File;
 
 
     constructor(
@@ -30,12 +31,24 @@ export class SignupComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', [Validators.required,Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            file:[]
+
         });
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
+    
+    selectFile(event)
+  {
+     let reader=new FileReader();
+     if(event.target.files && event.target.files.length>0)
+     {
+        this.file=event.target.files[0];
+        console.log(this.file);
+     }
+  }
 
     onSubmit() {
         this.submitted = true;
@@ -55,7 +68,16 @@ export class SignupComponent implements OnInit {
          user.prenomUser=prenom;
          user.emailUser=email;
          user.passwordUser=password;
-        this.userService.register(user)
+         const donn:FormData=new FormData();
+  
+         donn.append('image',this.file);
+       
+         donn.append("user",new Blob([JSON.stringify(user)], {
+              type: "application/json"
+         })
+       );
+
+        this.userService.register(donn)
             .pipe(first())
             .subscribe(
                 data => {

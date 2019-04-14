@@ -11,10 +11,10 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  register(user :User) {
+  register(donn:FormData) {
     
     
-    return this.http.post(`http://localhost:9999/registerUser`, user)
+    return this.http.post(`http://localhost:9999/registerUser`, donn)
     .pipe(map(user => {
         // register successful if there's a jwt token in the response
         if (user ) {

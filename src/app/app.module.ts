@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -15,6 +15,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostdetailComponent } from './postdetail/postdetail.component';
 import { AcceuilParCategorieComponent } from './acceuil-par-categorie/acceuil-par-categorie.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LatestNewsComponent } from './latest-news/latest-news.component';
 
 const routes: Routes = [
   { path: 'acceuil', component: AcceuilComponent },
@@ -41,11 +43,13 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     PostdetailComponent,
-    AcceuilParCategorieComponent
+    AcceuilParCategorieComponent,
+    SidebarComponent,
+    LatestNewsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
-
+    NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

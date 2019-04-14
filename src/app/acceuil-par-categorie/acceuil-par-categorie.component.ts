@@ -21,13 +21,18 @@ export class AcceuilParCategorieComponent implements OnInit {
  
   
   ngOnInit() {
-    
-    const id = this.route.snapshot.params['id'];
-    this.postservice.getPostParCategorie(id).then(
-      (post: Post[]) => {
-        this.posts = post;
-      }
-    );
+    this.route.queryParams.subscribe(queryParams => {
+      // do something with the query params
+    });
+    this.route.params.subscribe(routeParams => {
+      this.postservice.getPostParCategorie(routeParams.id).then(
+        (post: Post[]) => {
+          this.posts = post;
+        }
+      );
+      
+    });
+   
   
   }
 

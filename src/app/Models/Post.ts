@@ -1,6 +1,7 @@
 import { Categorie } from './Categorie';
 import { Like } from './Like';
 import { Admin } from './Admin';
+import { Comment } from './Comment';
 
 export class Post {
 	idPost:String;
@@ -12,7 +13,7 @@ export class Post {
     admin:Admin;
     categoriePost:Categorie;
     listLike:Like[];
-    listComment:Comment[];
+    listComment: Comment[];
     constructor() {
     }
 
