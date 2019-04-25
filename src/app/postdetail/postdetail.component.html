@@ -21,15 +21,15 @@
             </div>
             <div class="content-wrap">
               <ul class="tags mt-10">
-                <li><a href="#">{{post.categoriePost.titleCategorie}}</a></li>
+                <li><a [routerLink]="'/postdetail/'+post.idPost">{{post.categoriePost.titleCategorie}}</a></li>
               </ul>
-              <a href="#">
+              <a [routerLink]="'/postdetail/'+post.idPost">
                 <h3>{{post.titlePost}}</h3>
               </a>
               <ul class="meta pb-20">
-                <li><a href="#"><span class="lnr lnr-user"></span>{{post.admin.nomAdmin}} {{post.admin.prenomAdmin}}</a></li>
-                <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{post.datePost}}</a></li>
-                <li><a href="#"><span class="lnr lnr-bubble"></span>{{post.listComment.length}} </a></li>
+                <li><a [routerLink]="'/postdetail/'+post.idPost"><span class="lnr lnr-user"></span>{{post.admin.nomAdmin}} {{post.admin.prenomAdmin}}</a></li>
+                <li><a [routerLink]="'/postdetail/'+post.idPost"><span class="lnr lnr-calendar-full"></span>{{post.datePost}}</a></li>
+                <li><a [routerLink]="'/postdetail/'+post.idPost"><span class="lnr lnr-bubble"></span>{{post.listComment.length}} </a></li>
               </ul>
               <p>{{post.contenuePost}}
                  </p>
@@ -51,7 +51,7 @@
                             <img  src="http://localhost:9999/photoUser/{{comment.user.idUser}}" width="50px" height="50px"></div> 
                                                    </div>
                         <div class="desc">
-                          <h5><a href="#">{{comment.user.nomUser}} {{comment.user.prenomUser}}</a></h5>
+                          <h5><a [routerLink]="'/postdetail/'+post.idPost">{{comment.user.nomUser}} {{comment.user.prenomUser}}</a></h5>
                           <p class="date">December 4, 2017 at 3:12 pm </p>
                           <p class="comment">
                             {{comment.contenuComment}}

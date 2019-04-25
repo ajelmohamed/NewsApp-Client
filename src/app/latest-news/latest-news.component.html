@@ -5,24 +5,24 @@
       <div class="col-lg-8 top-post-left">
         <div class="feature-image-thumb relative">
           <div class="overlay overlay-bg"></div>
-          <div   *ngIf="lposts[2].photoPost!=null">
-            <img   src="http://localhost:9999/photoPost/{{lposts[2].idPost}}"   height="410px"></div> 
-            <video *ngIf="lposts[2].videoPost!=null" controls  id="videoPlayer">
-              <source src="http://localhost:9999/videoPost/{{lposts[2].idPost}}" type="video/mp4"  height="410px" />
+          <div   *ngIf="lposts[0].photoPost!=null">
+            <img   src="http://localhost:9999/photoPost/{{lposts[0].idPost}}"   height="410px"></div> 
+            <video *ngIf="lposts[0].videoPost!=null" controls  id="videoPlayer">
+              <source src="http://localhost:9999/videoPost/{{lposts[0].idPost}}" type="video/mp4"  height="410px" />
                
               </video>
         </div>
         <div class="top-post-details">
           <ul class="tags">
-            <li><a href="#">{{lposts["2"].categoriePost.titleCategorie}}</a></li>
+            <li><a [routerLink]="'/postdetail/'+lposts[0].idPost">{{lposts["0"].categoriePost.titleCategorie}}</a></li>
           </ul>
-          <a href="image-post.html">
-            <h3>{{lposts["2"].titlePost}}</h3>
+          <a [routerLink]="'/postdetail/'+lposts[0].idPost">
+            <h3>{{lposts["0"].titlePost}}</h3>
           </a>
           <ul class="meta">
-            <li><a href="#"><span class="lnr lnr-user"></span>{{lposts["2"].admin.nomAdmin}} {{lposts["2"].admin.prenomAdmin}}</a></li>
-            <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{lposts["2"].datePost}}</a></li>
-            <li><a href="#"><span class="lnr lnr-bubble"></span>{{lposts["2"].listComment.length}} Comments</a></li>
+            <li><a [routerLink]="'/postdetail/'+lposts[0].idPost"><span class="lnr lnr-user"></span>{{lposts["0"].admin.nomAdmin}} {{lposts["0"].admin.prenomAdmin}}</a></li>
+            <li><a [routerLink]="'/postdetail/'+lposts[0].idPost"><span class="lnr lnr-calendar-full"></span>{{lposts["0"].datePost}}</a></li>
+            <li><a [routerLink]="'/postdetail/'+lposts[0].idPost"><span class="lnr lnr-bubble"></span>{{lposts["0"].listComment.length}} Comments</a></li>
           </ul>
         </div>
       </div>
@@ -40,40 +40,40 @@
           
           <div class="top-post-details">
             <ul class="tags">
-              <li><a href="#">{{lposts["1"].categoriePost.titleCategorie}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[1].idPost">{{lposts["1"].categoriePost.titleCategorie}}</a></li>
             </ul>
-            <a href="image-post.html">
+            <a [routerLink]="'/postdetail/'+lposts[1].idPost">
               <h4>{{lposts["1"].titlePost}}</h4>
             </a>
             <ul class="meta">
-              <li><a href="#"><span class="lnr lnr-user"></span>{{lposts["1"].admin.nomAdmin}} {{lposts["1"].admin.prenomAdmin}}</a></li>
-              <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{lposts["1"].datePost}}</a></li>
-              <li><a href="#"><span class="lnr lnr-bubble"></span>{{lposts["1"].listComment.length}} Comments</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[1].idPost"><span class="lnr lnr-user"></span>{{lposts["1"].admin.nomAdmin}} {{lposts["1"].admin.prenomAdmin}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[1].idPost"><span class="lnr lnr-calendar-full"></span>{{lposts["1"].datePost}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[1].idPost"><span class="lnr lnr-bubble"></span>{{lposts["1"].listComment.length}} Comments</a></li>
             </ul>
           </div>
         </div>
         <div class="single-top-post mt-10">
           <div class="feature-image-thumb relative">
             <div class="overlay overlay-bg"></div>
-            <div   *ngIf="lposts[0].photoPost!=null">
-              <img  src="http://localhost:9999/photoPost/{{lposts[0].idPost}}" height="200px"></div> 
-              <video *ngIf="lposts[0].videoPost!=null" controls  id="videoPlayer"  height="200px">
-                <source src="http://localhost:9999/videoPost/{{lposts[0].idPost}}" type="video/mp4" />
+            <div   *ngIf="lposts[2].photoPost!=null">
+              <img  src="http://localhost:9999/photoPost/{{lposts[2].idPost}}" height="200px"></div> 
+              <video *ngIf="lposts[2].videoPost!=null" controls  id="videoPlayer"  height="200px">
+                <source src="http://localhost:9999/videoPost/{{lposts[2].idPost}}" type="video/mp4" />
                  
                 </video>
           
           </div>
           <div class="top-post-details">
             <ul class="tags">
-              <li><a href="#">{{lposts["0"].categoriePost.titleCategorie}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[2].idPost">{{lposts["2"].categoriePost.titleCategorie}}</a></li>
             </ul>
-            <a href="image-post.html">
-              <h4>{{lposts["1"].titlePost}}</h4>
+            <a [routerLink]="'/postdetail/'+lposts[2].idPost">
+              <h4>{{lposts["2"].titlePost}}</h4>
             </a>
             <ul class="meta">
-              <li><a href="#"><span class="lnr lnr-user"></span>{{lposts["0"].admin.nomAdmin}} {{lposts["0"].admin.prenomAdmin}}</a></li>
-              <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{lposts["0"].datePost}}</a></li>
-              <li><a href="#"><span class="lnr lnr-bubble"></span>{{lposts["0"].listComment.length}} Comments</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[2].idPost"><span class="lnr lnr-user"></span>{{lposts["2"].admin.nomAdmin}} {{lposts["2"].admin.prenomAdmin}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[2].idPost"><span class="lnr lnr-calendar-full"></span>{{lposts["2"].datePost}}</a></li>
+              <li><a [routerLink]="'/postdetail/'+lposts[2].idPost"><span class="lnr lnr-bubble"></span>{{lposts["2"].listComment.length}} Comments</a></li>
             </ul>
           </div>
         </div>

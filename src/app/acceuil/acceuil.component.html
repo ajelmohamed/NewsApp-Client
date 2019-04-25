@@ -9,7 +9,7 @@
 						<div class="col-lg-8 post-list">
 							<!-- Start latest-post Area -->
 							<div class="latest-post-wrap">
-								<h4 class="cat-title">Latest News</h4>
+								<h4 class="cat-title">Dernières Actualités</h4>
 								<div class="single-latest-post row align-items-center" *ngFor="let post of posts | paginate: { id: 'listing_pagination',
 								itemsPerPage: 4,
 								currentPage: page,
@@ -25,7 +25,7 @@
 												  </video>
 										</div>
 										<ul class="tags">
-											<li><a href="#">{{post.categoriePost.titleCategorie}}</a></li>
+											<li><a [routerLink]="'/postdetail/'+post.idPost">{{post.categoriePost.titleCategorie}}</a></li>
 										</ul>
 									</div>
 									<div class="col-lg-7 post-right">

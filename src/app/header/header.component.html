@@ -18,6 +18,9 @@
 				<div class="row align-items-center justify-content-between">
 					<nav id="nav-menu-container">
 						<ul class="nav-menu" >
+								<li class="menu-active" >
+							   <a routerLink="" >Acceuil</a></li>
+					   
 							<li class="menu-active" *ngFor="let categorie of categories; let i = index"
 							 >
 							<a routerLink="/postparcategorie/{{categorie.idCategorie}}" >{{categorie.titleCategorie}}</a></li>
